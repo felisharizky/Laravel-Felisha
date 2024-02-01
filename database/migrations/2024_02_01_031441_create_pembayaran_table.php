@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('nisn', 10);
             $table->date('tgl_date');
             $table->string('bulan_dibayar', 8);
-            $table->string('');
-            $table->timestamps();
-            $table->timestamps();
+            $table->string('tahun_dibayar', 4);
+            $table->foreignId('id_spp', 11);
+            $table->integer('jumlah_bayar', 11);
             $table->timestamps();
         });
     }
