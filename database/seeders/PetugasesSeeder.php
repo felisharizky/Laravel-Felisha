@@ -17,10 +17,10 @@ class PetugasesSeeder extends Seeder
     $levels = ["admin", "petugas"];
     
         DB::table("petugases")->insert([
-            "id_petugas" => 1234,
-            "username" => str::random(25),
-            "password" => str::random(32),
-            "nama_petugas" => "Jojo",
+            "id_petugas" => rand(1,85),
+            "username" => str::random(15),
+            "password" => str::random(20),
+            "nama_petugas" => "Felisha",
             "level" => $levels[array_rand($levels)],
         ]);
      }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id('id_pembayaran');
-            $table->foreignId('id_petugas')->references('id_petugas')->on('petugass');
+            $table->foreignId('id_petugas')->references('id_petugas')->on('petugases');
             $table->char('nisn', 10);
             $table->foreign('nisn')->references('nisn')->on('siswas');
             $table->date('tgl_bayar');

@@ -14,9 +14,9 @@ class KelasesSeeder extends Seeder
     public function run(): void
     {
         DB::table('kelases')->insert([
-            "id_kelas" => 12,
+            "id_kelas" => rand(1,50),
             "nama_kelas" => str::random(10),
-            "kompetensi_keahlian" => str::random(10),
+            "kompetensi_keahlian" => 'RPL',
         ]);
     
     }

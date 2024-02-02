@@ -13,9 +13,9 @@ class SppSeeder extends Seeder
     public function run(): void
     {
         DB::table("spps")->insert([
-            'id_spp' => '1529',
+            'id_spp' => rand(1, 20),
             'tahun' => random_int(2000, 2024),
-            'nominal' => '200000',
+            'nominal' => rand(1, 15),
         ]);
 
     }
