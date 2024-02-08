@@ -19,36 +19,28 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('sbadmin/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+@stack('css')
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
-        @include('template.sparate.sidebar');
+       @include('template.separate.sidebar')
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    @include('template.sparate.toggle');
-                    <!-- Topbar Search -->
-                    @include('template.sparate.search');
-
-                    <!-- Topbar Navbar -->
-                    @include('template.sparate.topnavbar');
-                <!-- End of Topbar -->
-                @include('template.sparate.card');
+           @include('template.separate.main')
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            @include('template.separate.footer')
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -56,18 +48,33 @@
     </a>
 
     <!-- Logout Modal-->
-    @include('template.sparate.logoutmodal');
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('sbadmin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="{{asset('sbadmin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="{{asset('sbadmin/js/sb-admin-2.min.js')}}"></script>
-
+@stack('js')
 </body>
 
 </html>

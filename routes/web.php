@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,11 @@ Route::get('/', function () {
 
 Route::view('/template', 'template.master');
 
+Route::controller(SppController::class)->group(function(){
+    Route::get('/spp', 'index')->name('spp.index');
+    Route::get('/spp/create', 'create')->name('spp.create');
+    Route::post('/spp', 'store')->name('spp.store');
+    Route::get('/spp/{id}/edit','edit')->name('spp.edit');
+    Route::put('/spp/{id}','update')->name('spp.update');
+    Route::delete('/spp/{id}','destroy')->name('spp.destroy');
+    });
