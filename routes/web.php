@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +32,28 @@ Route::controller(SppController::class)->group(function(){
     Route::delete('/spp/{id}','destroy')->name('spp.destroy');
     });
 
-    Route::resource('/kelas', KelasController::class);
+    
     
     Route::resource('/petugas', PetugasController::class);
+
+    Route::controller(RegisterController::class)->group(function(){
+        Route::get('/register/create','create')->name('register.create');
+        Route::post('/register','store')->name('register.store');
+        Route::get('/register', 'index')->name('register.index');
+    });
+
+    Route::controller(AuthController::class)->group(function(){
+        Route::get('/login','login')->name('auth.login');
+        Route::post('/authenticate','authenticate')->name('auth.authenticate');
+        Route::post('/logout','logout')->name('auth.logout');
+    });
+
+
+
+    Route::middleware('can:isUser')->group(function(){
+        Route::resource('/kelas', KelasController::class);
+    });
+
+    Route::middleware('can:isAdmin')->group(function(){
+        Route::get('/spp', [SppController::class,'index'])->name('spp.index');
+    });
